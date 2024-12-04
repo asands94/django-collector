@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 class Book:
     def __init__(self, name, image, author, description, year_published):
@@ -17,7 +16,7 @@ books = [
 ]
 # Create your views here.
 def home(request):
-    return HttpResponse('<h1>ᓚᘏᗢ</h1>')
+    return render(request, 'home.html')
 
 def about(request):
     return render(request, 'about.html')
