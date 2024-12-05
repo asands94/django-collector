@@ -9,7 +9,7 @@
 <section class="card-container">
   {% for book in books %}
   <div class="card">
-    <a href="/books/{{book.id}}">
+    <a href="{% url 'book-detail' book.id%}">
       <div class="card-content">
         <h2 class="card-title">{{ book.name }}</h2>
         <div class="card-img-container">
