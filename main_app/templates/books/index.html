@@ -9,16 +9,18 @@
 <section class="card-container">
   {% for book in books %}
   <div class="card">
-    <div class="card-content">
-      <h2 class="card-title">{{ book.name }}</h2>
-      <div class="card-img-container">
-        <img src="{{book.image}}" alt="{{book.name}}" />
-      </div>
+    <a href="/books/{{book.id}}">
+      <div class="card-content">
+        <h2 class="card-title">{{ book.name }}</h2>
+        <div class="card-img-container">
+          <img src="{{book.image}}" alt="{{book.name}}" />
+        </div>
 
-      <p>Written by {{ book.author }}</p>
-      <p>Published in {{book.year_published}}</p>
-      <p><small>{{ book.description }}</small></p>
-    </div>
+        <p>Written by {{ book.author }}</p>
+        <p>Published in {{book.year_published}}</p>
+        <p><small>{{ book.description }}</small></p>
+      </div>
+    </a>
   </div>
   {% endfor %}
 </section>

@@ -9,4 +9,4 @@ class Book(models.Model):
     year_published = models.IntegerField()
 
     def __str__(self):
-        return self.name
+        return f"{self.id}. {self.name}"

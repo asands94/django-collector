@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/books/book-detail.css' %}" />
+{% endblock %} {% block content %}
+<section class="book-container">
+  <div class="card">
+    <div class="card-content">
+      <h2 class="card-title">{{ book.name }}</h2>
+      <div class="card-img-container">
+        <img src="{{book.image}}" alt="{{book.name}}" />
+      </div>
+
+      <p>Written by {{ book.author }}</p>
+      <p>Published in {{book.year_published}}</p>
+      <p>{{ book.description }}</p>
+    </div>
+  </div>
+</section>
+{% endblock %}
