@@ -37,7 +37,7 @@ class Rating(models.Model):
     def __str__(self):
         return f"{self.book.name} is a {self.get_rating_display()}"
 
-class Note(models.Model):
+class Comment(models.Model):
     date = models.DateField()
     comment = models.TextField(max_length=250)
     book = models.ForeignKey(Book, on_delete=models.CASCADE)

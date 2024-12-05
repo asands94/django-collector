@@ -1,7 +1,16 @@
 from django import forms
-from .models import Rating, Note
+from .models import Rating, Comment
 
-class NoteForm(forms.ModelForm):
+class CommentForm(forms.ModelForm):
     class Meta:
-        model = Note
+        model = Comment
         fields = ['date', 'comment']
+        widgets = {
+            'date': forms.DateInput(
+                format=('%Y-%m-%d'),
+                attrs={
+                    'placeholder': 'Select a date',
+                    'type': 'date'
+                }
+            ),
+        }

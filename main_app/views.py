@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Book
-from .forms import NoteForm
+from .forms import CommentForm
 
 # Create your views here.
 def home(request):
@@ -16,9 +16,9 @@ def book_index(request):
 
 def book_detail(request, book_id):
     book = Book.objects.get(id=book_id)
-    note_form = NoteForm()
+    comment_form = CommentForm()
     return render(request, 'books/detail.html', {
-        'book': book, 'note_form': note_form
+        'book': book, 'comment_form': comment_form
         })
 
 class BookCreate(CreateView):
@@ -33,8 +33,8 @@ class BookDelete(DeleteView):
     model = Book
     success_url = '/books/'
 
-def add_review(request, book_id):
-    form = NoteForm(request.POST)
+def add_note(request, book_id):
+    form = CommentForm(request.POST)
     if form.is_valid():
         new_review = form.save(commit=False)
         new_review.book_id = book_id
