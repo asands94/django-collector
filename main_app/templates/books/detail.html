@@ -22,7 +22,7 @@
   <h3>Add a Comment</h3>
 <form action="{% url 'add-note' book.id %}" method="post" class="subsection-content" autocomplete="off">
   {% csrf_token %} 
-  {{ note_form.as_p }}
+  {{ comment_form.as_p }}
   <button type="submit" class="btn submit">Add Comment</button>
 </form>
   <div class="subsection-title">
