@@ -29,6 +29,7 @@
   <div class="subsection-title">
     <h2>Rating</h2>
   </div>
+  {% if book.rating_set.all.count %}
   <table>
     <thead>
       <tr>
@@ -45,6 +46,9 @@
       {% endfor %}
     </tbody>
   </table>
+  {% else %}
+  <p>No ratings yet</p>
+  {% endif %}
 </section>
 
 <section class="notes">
@@ -57,6 +61,7 @@
   <div class="subsection-title">
     <h2>Comments</h2>
   </div>
+  {% if book.comment_set.all.count %}
   <table>
     <thead>
       <tr>
@@ -64,6 +69,7 @@
         <th>Comments</th>
       </tr>
     </thead>
+   
     <tbody>
       {% for comment in book.comment_set.all %}
         <tr>
@@ -72,6 +78,10 @@
         </tr>
       {% endfor %}
     </tbody>
+   
   </table>
+  {% else %}
+  <p>No comments yet</p>
+  {% endif %}
 </section>
 {% endblock %}

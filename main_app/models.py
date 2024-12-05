@@ -37,6 +37,9 @@ class Rating(models.Model):
 
     def __str__(self):
         return f"{self.book.name} is a {self.get_rating_display()}"
+    
+    class Meta:
+        ordering = ['-date']
 
 class Comment(models.Model):
     date = models.DateField()
@@ -45,3 +48,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment #{self.id} for {self.book.name}"
+    
+    class Meta:
+        ordering = ['-date']
