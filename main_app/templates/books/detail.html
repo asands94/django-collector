@@ -18,4 +18,31 @@
       </div>
   </div>
 </section>
+<section class="reviews">
+  <h3>Add a Review</h3>
+<form action="{% url 'add-review' book.id %}" method="post" class="subsection-content" autocomplete="off">
+  {% csrf_token %} 
+  {{ review_form.as_p }}
+  <button type="submit" class="btn submit">Add Review</button>
+</form>
+  <div class="subsection-title">
+    <h2>Reviews</h2>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Rating</th>
+        <th>Comments</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for review in book.review_set.all %}
+        <tr>
+          <td>{{review.get_rating_display}}</td>
+          <td>{{review.comment}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
 {% endblock %}

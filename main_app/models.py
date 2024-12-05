@@ -24,15 +24,23 @@ class Book(models.Model):
     
     def get_absolute_url(self):
         return reverse('book-detail', kwargs={'book_id': self.id})
-
-class Review(models.Model):
-    comment = models.TextField(max_length=250, blank=True)
+    
+class Rating(models.Model):
     rating = models.CharField(
         max_length=1,
         choices=RATINGS,
         default=RATINGS[0][0]
     )
+
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"This books rating is {self.get_rating_display()}"
+        return f"{self.book.name} is a {self.get_rating_display()}"
+
+class Note(models.Model):
+    date = models.DateField()
+    comment = models.TextField(max_length=250)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Comment #{self.id} for {self.book.name}"
