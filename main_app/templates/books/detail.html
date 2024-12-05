@@ -18,6 +18,35 @@
       </div>
   </div>
 </section>
+
+<section class="rating">
+  <h3>Rate This Book</h3>
+<form action="{% url 'add-rating' book.id %}" method="post" class="subsection-content" autocomplete="off">
+  {% csrf_token %} 
+  {{ rating_form.as_p }}
+  <button type="submit" class="btn submit">Add Rating</button>
+</form>
+  <div class="subsection-title">
+    <h2>Rating</h2>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for rating in book.rating_set.all %}
+        <tr>
+          <td>{{rating.date}}</td>
+          <td>{{rating.get_rating_display}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
 <section class="notes">
   <h3>Add a Comment</h3>
 <form action="{% url 'add-note' book.id %}" method="post" class="subsection-content" autocomplete="off">

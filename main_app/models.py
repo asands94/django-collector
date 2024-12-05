@@ -26,6 +26,7 @@ class Book(models.Model):
         return reverse('book-detail', kwargs={'book_id': self.id})
     
 class Rating(models.Model):
+    date = models.DateField('Rating date')
     rating = models.CharField(
         max_length=1,
         choices=RATINGS,
