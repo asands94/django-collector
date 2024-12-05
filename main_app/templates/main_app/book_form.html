@@ -3,7 +3,11 @@
 {% endblock %} {% block content %}
 
 <div class="page-header">
+  {% if book %}
+  <h1>Edit {{ book.name }}</h1>
+  {% else %}
   <h1>Add a Book</h1>
+  {% endif %}
 </div>
 
 <form action="" method="post" class="form-container">

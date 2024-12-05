@@ -12,7 +12,10 @@
       <p>Written by {{ book.author }}</p>
       <p>Published in {{book.year_published}}</p>
       <p>{{ book.description }}</p>
-    </div>
+      <div class="book-actions">
+        <a href="{% url 'book-update' book.id %}" class="btn warn">Edit</a>
+        <a href="{% url 'book-delete' book.id %}" class="btn danger">Delete</a>
+      </div>
   </div>
 </section>
 {% endblock %}
