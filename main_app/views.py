@@ -2,10 +2,13 @@ from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Book
 from .forms import CommentForm, RatingForm
+from django.contrib.auth.views import LoginView
+
 
 # Create your views here.
-def home(request):
-    return render(request, 'home.html')
+class Home(LoginView):
+    template_name = 'home.html'
+
 
 def about(request):
     return render(request, 'about.html')
@@ -24,7 +27,11 @@ def book_detail(request, book_id):
 
 class BookCreate(CreateView):
     model = Book
-    fields = '__all__'
+    fields = ['name', 'image', 'author', 'description', 'year_published']
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user  
+        return super().form_valid(form)
 
 class BookUpdate(UpdateView):
     model = Book
